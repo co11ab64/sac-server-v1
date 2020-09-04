@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(__dirname + '/public'));
 
-let connections = [];
+let connections = {
+    "T-4904828524211924":[
+        {clone: "data"}
+    ]
+};
 app.get("/connect", (req, res) => {
     var token = "T-" + String(Math.random()).substring(2);
     connections[token] = [];
