@@ -7,5 +7,5 @@ app.get("/",(req,res)=>{
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
-    // console.log("")
+    console.log(`App initialized and listening on port ${PORT}`)
 })
