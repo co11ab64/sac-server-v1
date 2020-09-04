@@ -1,0 +1,25 @@
+{
+  "name": "mq-server",
+  "version": "1.0.0",
+  "description": "Messaging queue server for SAC smart app testing",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/co11ab64/mq-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/co11ab64/mq-server/issues"
+  },
+  "homepage": "https://github.com/co11ab64/mq-server#readme"
+}
