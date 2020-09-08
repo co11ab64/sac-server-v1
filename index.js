@@ -31,6 +31,9 @@ app.get("/action", (req, res) => {
     var token = req.query.token;
     var keep = req.query.keep;
     var actions = connections[token];
+    console.log(connections[token]);
+    console.log(token,keep, actions)
+
     if (!keep) {
         connections[token] = [];
     }
@@ -41,17 +44,21 @@ app.get("/action", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    // res.sendFile('views/qr-code.html', { root: __dirname });
     res.render("index");
 });
 
 app.get("/qrcode", (req,res)=>{
     res.render("qr-code");
-})
+});
+
+app.get("/controller",(req,res)=>{
+    res.render("controller.ejs",{ query: req.query});
+});
 
 app.post("/action", (req, res) => {
     var token = req.body.token;
-    var actions = connections[token];
+    var actions = connections[token] || [];
+    console.log("Incoming Request: ", token, actions, req.body)
     if (actions) {
         connections[token] = actions.concat(req.body.actions);
         actions = connections[token];
