@@ -12,7 +12,11 @@ app.set("view engine", "ejs")
 
 let connections = {
     "T-4904828524211924": [
-        { clone: "data" }
+        {
+            action:"clone",
+            value:"data from somewhere",
+            ts: new Date().getTime()
+        }
     ]
 };
 app.get("/connect", (req, res) => {
