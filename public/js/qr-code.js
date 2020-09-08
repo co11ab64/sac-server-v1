@@ -4,7 +4,7 @@ function generateQRCode(token) {
     let qrcode = document.querySelector("img"),
         a = document.querySelector("a"),
         baseURL = "https://api.qrserver.com/v1/create-qr-code/?size=150x150",
-        data = `${serverURL}\controller.html?token=${token}`;
+        data = `${serverURL}/controller?token=${token}`;
 
     qrcode.src = `${baseURL}&data=${data}`;
     a.href = `${baseURL}&data=${data}`;
