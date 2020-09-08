@@ -8,10 +8,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(express.static(__dirname + '/public'));
+app.set("view engine", "ejs")
 
 let connections = {
-    "T-4904828524211924":[
-        {clone: "data"}
+    "T-4904828524211924": [
+        { clone: "data" }
     ]
 };
 app.get("/connect", (req, res) => {
@@ -36,21 +37,26 @@ app.get("/action", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    // res.sendFile('views/qr-code.html', { root: __dirname });
+    res.render("index");
 });
 
-app.post("/action",(req,res)=>{
+app.get("/qrcode", (req,res)=>{
+    res.render("qr-code");
+})
+
+app.post("/action", (req, res) => {
     var token = req.body.token;
     var actions = connections[token];
-    if(actions){
+    if (actions) {
         connections[token] = actions.concat(req.body.actions);
         actions = connections[token];
         res.json({
             actions: actions
         });
-    }else{
+    } else {
         res.json({
-            error:"Invalid token"
+            error: "Invalid token"
         });
     }
 });
