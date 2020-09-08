@@ -10,7 +10,7 @@ function generateQRCode(token) {
 
 
 window.onload = async function () {
-    let token = await fetch("http://localhost:3000/connect")
+    let token = await fetch(`${serverURL}/connect`)
         .then(response => response.json())
         .then(data => {
             let { token } = data;
