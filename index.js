@@ -31,8 +31,6 @@ app.get("/action", (req, res) => {
     var token = req.query.token;
     var keep = req.query.keep;
     var actions = connections[token];
-    console.log(connections[token]);
-    console.log(token,keep, actions)
 
     if (!keep) {
         connections[token] = [];
@@ -58,7 +56,6 @@ app.get("/controller",(req,res)=>{
 app.post("/action", (req, res) => {
     var token = req.body.token;
     var actions = connections[token] || [];
-    console.log("Incoming Request: ", token, actions, req.body)
     if (actions) {
         connections[token] = actions.concat(req.body.actions);
         actions = connections[token];
